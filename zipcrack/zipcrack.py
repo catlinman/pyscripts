@@ -164,6 +164,7 @@ def crack_sequence(filepath, outpath, set_chars, set_length, iteration_start=0, 
             zip_file.extractall(outpath, pwd=password.encode("utf-8", "replace"))
 
             print("Password found: {}".format(password))
+
             return
 
         except:

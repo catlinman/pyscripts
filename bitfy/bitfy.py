@@ -25,7 +25,7 @@ Description:
     Takes in an input, filters out all links and converts them to bit.ly links.
 
 Requirements:
-    Python 3.4+, requests, docopt
+    Python 3.4+, docopt, requests
 """
 
 import sys
@@ -33,9 +33,11 @@ import os
 import json
 import re
 
-import requests
-
+# Command line parsing.
 from docopt import docopt
+
+# HTTP request library.
+import requests
 
 
 def parse_links(s):

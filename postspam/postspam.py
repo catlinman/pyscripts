@@ -3,7 +3,7 @@
 
 """Postspam
 Usage:
-    postspam.py <url> <path>
+    postspam.py <url> <data>
                 [--count=COUNT]
                 [--sleep=SLEEP]
                 [--random=RANDOM]
@@ -23,7 +23,7 @@ Description:
     from an input CSV file. CSV headers determine the fields to set.
 
 Requirements:
-    Python 3.4+, requests, docopt
+    Python 3.4+, docopt, requests
 """
 
 # Import basic modules.
@@ -32,10 +32,11 @@ import time
 import csv
 import random
 
-# Import additionall modules.
-import requests
-
+# Command line parsing.
 from docopt import docopt
+
+# HTTP request library.
+import requests
 
 
 def loadcsv(filename):

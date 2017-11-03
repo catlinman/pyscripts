@@ -25,17 +25,18 @@ Description:
     input character set.
 
 Requirements:
-    Python 3.4+, requests, docopt
+    Python 3.4+, docopt, requests
 """
 
 import os
 import time
-
-import requests
-
-from docopt import docopt
 from datetime import datetime
 
+# Command line parsing.
+from docopt import docopt
+
+# HTTP request library.
+import requests
 
 def cli():
     args = docopt(__doc__, version="Seqcrawl 0.2")
