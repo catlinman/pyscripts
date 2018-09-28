@@ -30,7 +30,18 @@ import sys
 # Command line parsing.
 from docopt import docopt
 
+
 def merge(data, delimiter):
+    """
+    Merge rows with an equal starting index from an array of CSV data rows.
+
+    Args:
+        data (list): Input list of string rows to sort.
+        delimiter (str): Delimiter of the CSV format to use for value splitting.
+
+    Returns:
+        merged list of rows in string format.
+    """
     data_merged = []
     row_merged = []
 
@@ -64,8 +75,10 @@ def merge(data, delimiter):
 
     return data_merged
 
+
 def cli():
-    args = docopt(__doc__, version="CSV Merge 0.1")
+    """ Script and command line interface entry point. """
+    args = docopt(__doc__, version="CSV Merge 0.2")
 
     # Handle arguments.
     input_path = args["--input"]
@@ -84,7 +97,7 @@ def cli():
 
     # Otherwise read from stdin.
     else:
-        merged = merge([s.strip() for s in sys.stdin.readlines()], delimiter)        
+        merged = merge([s.strip() for s in sys.stdin.readlines()], delimiter)
 
     # If an output path is defined write to it.
     if output_path:
