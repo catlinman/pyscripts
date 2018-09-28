@@ -31,12 +31,12 @@ import sys
 from docopt import docopt
 
 
-def sort(data, delimiter):
+def sort(data, delimiter=","):
     """
     Sorts an array of CSV data rows stored as strings and returns it as a list.
 
     Args:
-        data (list): input list of string rows to sort.
+        data (list): input list of string rows or row values as a list to sort.
         delimiter (str): delimiter of the CSV format to use for value splitting.
 
     Returns:
@@ -45,8 +45,8 @@ def sort(data, delimiter):
     data_sorted = []
 
     for row in data:
-        # Convert our row into an array of strings.
-        values = row.split(delimiter)
+        # Convert our string row into a list of strings if it's not already one.
+        values = row.split(delimiter) if type(row) is str else row
 
         # Store our identifier.
         id = values[0]
@@ -63,7 +63,7 @@ def sort(data, delimiter):
 
 def cli():
     """ Script and command line interface entry point. """
-    args = docopt(__doc__, version="CSV Merge 0.1")
+    args = docopt(__doc__, version="CSV Sort 0.2")
 
     # Handle arguments.
     input_path = args["--input"]

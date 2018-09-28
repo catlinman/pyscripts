@@ -31,13 +31,13 @@ import sys
 from docopt import docopt
 
 
-def merge(data, delimiter):
+def merge(data, delimiter=","):
     """
     Merge rows with an equal starting index from an array of CSV data rows.
 
     Args:
-        data (list): Input list of string rows to sort.
-        delimiter (str): Delimiter of the CSV format to use for value splitting.
+        data (list): input list of string rows or row values as a list to merge.
+        delimiter (str): delimiter of the CSV format to use for value splitting.
 
     Returns:
         merged list of rows in string format.
@@ -49,8 +49,8 @@ def merge(data, delimiter):
     id = None
 
     for row in data:
-        # Split the line and get values using the delimiter.
-        values = row.split(delimiter)
+        # Convert our string row into a list of strings if it's not already one.
+        values = row.split(delimiter) if type(row) is str else row
 
         # Assign a value if this is the first run.
         if not id:
@@ -78,7 +78,7 @@ def merge(data, delimiter):
 
 def cli():
     """ Script and command line interface entry point. """
-    args = docopt(__doc__, version="CSV Merge 0.2")
+    args = docopt(__doc__, version="CSV Merge 0.3")
 
     # Handle arguments.
     input_path = args["--input"]
